@@ -11,7 +11,8 @@ gc()             #garbage collection
 require("data.table")
 require("lightgbm")
 
-setwd("~/buckets/b1/")
+setwd("C:/Users/dolor/Google Drive/Dolo/ITBAEspecializacion/5.Mineria de Datos")
+#setwd("~/buckets/b1/")
 
 #cargo el dataset donde voy a entrenar
 dataset  <- fread("./datasetsOri/paquete_premium_202011.csv")
