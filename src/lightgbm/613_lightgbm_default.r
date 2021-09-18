@@ -1,3 +1,7 @@
+#Necesita para correr en Google Cloud
+#16 GB de memoria RAM
+#256 GB de espacio en el disco local
+#4 vCPU
 #LightGBM  min_data_in_leaf= 4000   quitando    "mpasivos_margen", "mactivos_margen"
 
 #limpio la memoria
@@ -15,8 +19,10 @@ dataset  <- fread("./datasetsOri/paquete_premium_202011.csv")
 #paso la clase a binaria que tome valores {0,1}  enteros
 dataset[ , clase01 := ifelse( clase_ternaria=="BAJA+2", 1L, 0L) ]
 
+campos_malos  <- c("mpasivos_margen", "mactivos_margen")
+
 #los campos que se van a utilizar
-campos_buenos  <- setdiff( colnames(dataset), c("clase_ternaria","clase01", "mpasivos_margen","mactivos_margen") )
+campos_buenos  <- setdiff( colnames(dataset), c("clase_ternaria","clase01", campos_malos) )
 
 
 #dejo los datos en el formato que necesita LightGBM

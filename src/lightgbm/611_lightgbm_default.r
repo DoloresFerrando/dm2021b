@@ -1,3 +1,7 @@
+#Necesita para correr en Google Cloud
+#16 GB de memoria RAM
+#256 GB de espacio en el disco local
+#4 vCPU
 # LightGBM  totalmente puro, con parametros por default, sin quitar ninguna variable
 
 #limpio la memoria
