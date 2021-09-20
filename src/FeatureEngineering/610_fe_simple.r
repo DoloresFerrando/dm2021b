@@ -11,8 +11,8 @@ require("data.table")
 
 
 #Establezco el Working Directory
-setwd("C:/Users/dolor/Google Drive/Dolo/ITBAEspecializacion/5.Mineria de Datos")
-#setwd( "~/buckets/b1/" )
+#setwd("C:/Users/dolor/Google Drive/Dolo/ITBAEspecializacion/5.Mineria de Datos")
+setwd( "~/buckets/b1/" )
 
 
 EnriquecerDataset <- function( dataset , arch_destino )
