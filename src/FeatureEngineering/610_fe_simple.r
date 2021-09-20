@@ -11,8 +11,8 @@ require("data.table")
 
 
 #Establezco el Working Directory
-#setwd("C:/Users/dolor/Google Drive/Dolo/ITBAEspecializacion/5.Mineria de Datos")
-setwd( "~/buckets/b1/" )
+setwd("C:/Users/dolor/Google Drive/Dolo/ITBAEspecializacion/5.Mineria de Datos")
+#setwd( "~/buckets/b1/" )
 
 
 EnriquecerDataset <- function( dataset , arch_destino )
@@ -83,6 +83,10 @@ EnriquecerDataset <- function( dataset , arch_destino )
   dataset[ , mv_ctransacciones := rowSums( cbind( ctarjeta_visa_transacciones,  ctarjeta_master_transacciones) , na.rm=TRUE ) ]
   ## deudas
   dataset[ , mprestamostotal := rowSums( cbind( cprestamos_personales, cprestamos_prendarios, cprestamos_hipotecarios), na.rm=TRUE ) ]
+  ## engagement
+  dataset[ , cdebitostotal := rowSums( cbind( ccuenta_debitos_automaticos, ctarjeta_visa_debitos_automaticos, ctarjeta_master_debitos_automaticos,cpagodeservicios), na.rm=TRUE ) ]
+  dataset[ , edadant := rowSums( cbind( cliente_edad,cliente_antiguedad/12), na.rm=TRUE ) ]
+  
   
   #valvula de seguridad para evitar valores infinitos
   #paso los infinitos a NULOS
