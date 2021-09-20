@@ -11,7 +11,8 @@ require("data.table")
 
 
 #Establezco el Working Directory
-setwd( "~/buckets/b1/crudo" )
+setwd("C:/Users/dolor/Google Drive/Dolo/ITBAEspecializacion/5.Mineria de Datos")
+#setwd( "~/buckets/b1/" )
 
 
 EnriquecerDataset <- function( dataset , arch_destino )
@@ -76,7 +77,13 @@ EnriquecerDataset <- function( dataset , arch_destino )
   dataset[ , mvr_mpagosdolares       := mv_mpagosdolares / mv_mlimitecompra ]
   dataset[ , mvr_mconsumototal       := mv_mconsumototal  / mv_mlimitecompra ]
   dataset[ , mvr_mpagominimo         := mv_mpagominimo  / mv_mlimitecompra ]
-
+  
+  ##MIAS
+  ##de actividad
+  dataset[ , mv_ctransacciones := rowSums( cbind( ctarjeta_visa_transacciones,  ctarjeta_master_transacciones) , na.rm=TRUE ) ]
+  ## deudas
+  dataset[ , mprestamostotal := rowSums( cbind( cprestamos_personales, cprestamos_prendarios, cprestamos_hipotecarios), na.rm=TRUE ) ]
+  
   #valvula de seguridad para evitar valores infinitos
   #paso los infinitos a NULOS
   infinitos      <- lapply(names(dataset),function(.name) dataset[ , sum(is.infinite(get(.name)))])
@@ -121,4 +128,4 @@ dataset2  <- fread("./datasetsOri/paquete_premium_202101.csv")
 EnriquecerDataset( dataset1, "./datasets/paquete_premium_202011_ext.csv" )
 EnriquecerDataset( dataset2, "./datasets/paquete_premium_202101_ext.csv" )
 
-quit( save="no")
+#quit( save="no")
