@@ -86,9 +86,10 @@ EnriquecerDataset <- function( dataset , arch_destino )
   ## engagement
   dataset[ , cdebitostotal := rowSums( cbind( ccuenta_debitos_automaticos, ctarjeta_visa_debitos_automaticos, ctarjeta_master_debitos_automaticos,cpagodeservicios), na.rm=TRUE ) ]
   dataset[ , edadant := rowSums( cbind( cliente_edad,cliente_antiguedad/12), na.rm=TRUE ) ]
-  dataset[,antguedaddiscr:=cut(cliente_antiguedad, breaks = c(0, 33, 41, 58, 61, 111, 114, 128, 260, Inf),
-                              )]
-  dataset[,edaddiscr:=cut(cliente_edad, breaks = c(0,30,36,55,65,89,96,Inf),
+ 
+#NO discretizar, lightgbm ya lo hace
+ # dataset[,antguedaddiscr:=cut(cliente_antiguedad, breaks = c(0, 33, 41, 58, 61, 111, 114, 128, 260, Inf),                      )]
+ # dataset[,edaddiscr:=cut(cliente_edad, breaks = c(0,30,36,55,65,89,96,Inf),
                                )]
   
   #valvula de seguridad para evitar valores infinitos
