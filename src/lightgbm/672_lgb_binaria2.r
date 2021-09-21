@@ -2,8 +2,9 @@
 #16 GB de memoria RAM
 #256 GB de espacio en el disco local
 #8 vCPU
-
+##
 #clase_binaria1   1={BAJA+2,BAJA+1}    0={CONTINUA}
+#
 #Optimizacion Bayesiana de hiperparametros de  lightgbm
 #funciona automaticamente con EXPERIMENTOS
 #va generando incrementalmente salidas para kaggle

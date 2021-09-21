@@ -90,8 +90,8 @@ EnriquecerDataset <- function( dataset , arch_destino )
 #NO discretizar, lightgbm ya lo hace
  # dataset[,antguedaddiscr:=cut(cliente_antiguedad, breaks = c(0, 33, 41, 58, 61, 111, 114, 128, 260, Inf),                      )]
  # dataset[,edaddiscr:=cut(cliente_edad, breaks = c(0,30,36,55,65,89,96,Inf),
-                               )]
-  
+#                               )]
+#  
   #valvula de seguridad para evitar valores infinitos
   #paso los infinitos a NULOS
   infinitos      <- lapply(names(dataset),function(.name) dataset[ , sum(is.infinite(get(.name)))])
