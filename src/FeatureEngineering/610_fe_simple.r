@@ -88,6 +88,7 @@ EnriquecerDataset <- function( dataset , arch_destino )
   dataset[ , edadant := rowSums( cbind( cliente_edad,cliente_antiguedad/12), na.rm=TRUE ) ]
  
 #NO discretizar, lightgbm ya lo hace
+  
  # dataset[,antguedaddiscr:=cut(cliente_antiguedad, breaks = c(0, 33, 41, 58, 61, 111, 114, 128, 260, Inf),                      )]
  # dataset[,edaddiscr:=cut(cliente_edad, breaks = c(0,30,36,55,65,89,96,Inf),
                                )]
