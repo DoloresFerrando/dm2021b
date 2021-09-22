@@ -89,7 +89,7 @@ EnriquecerDataset <- function( dataset , arch_destino )
    ## deudas
   dataset[ , MPRESTAMOSTOTAL := rowSums( cbind( cprestamos_personales, cprestamos_prendarios, cprestamos_hipotecarios), na.rm=TRUE ) ]
  
-   ## engagement
+  # ## engagement
   dataset[ , CDEBITOSTOTAL := rowSums( cbind( ccuenta_debitos_automaticos, ctarjeta_visa_debitos_automaticos, ctarjeta_master_debitos_automaticos,cpagodeservicios), na.rm=TRUE ) ]
   dataset[ , EDADANT := rowSums( cbind( cliente_edad,cliente_antiguedad/12), na.rm=TRUE ) ]
  
