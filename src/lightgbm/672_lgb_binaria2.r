@@ -48,7 +48,7 @@ kBO_iter    <-  150   #cantidad de iteraciones de la Optimizacion Bayesiana
 #Aqui se cargan los hiperparametros
 hs <- makeParamSet( 
          makeNumericParam("learning_rate",    lower= 0.001 , upper=    0.1),
-         makeNumericParam("feature_fraction", lower= 0.1  , upper=    1.2),
+         makeNumericParam("feature_fraction", lower= 0.1  , upper=    1),
          makeIntegerParam("min_data_in_leaf", lower= 0    , upper= 8000),
          makeIntegerParam("num_leaves",       lower=16L   , upper= 1050L),
          makeNumericParam("prob_corte",       lower= 0.010, upper=    0.065)
