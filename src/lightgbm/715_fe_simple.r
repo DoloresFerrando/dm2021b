@@ -82,7 +82,24 @@ EnriquecerDataset <- function( dataset , arch_destino )
   dataset[ , mvr_mpagosdolares       := mv_mpagosdolares / mv_mlimitecompra ]
   dataset[ , mvr_mconsumototal       := mv_mconsumototal  / mv_mlimitecompra ]
   dataset[ , mvr_mpagominimo         := mv_mpagominimo  / mv_mlimitecompra ]
-
+  ##MIAS
+  ##de actividad
+  dataset[ , MV_CTRANSACCIONES := rowSums( cbind( ctarjeta_visa_transacciones,  ctarjeta_master_transacciones) , na.rm=TRUE ) ]
+  dataset[,MVYCTA_TRANSACCIONES:=ctrx_quarter+MV_CTRANSACCIONES]
+  dataset[, MOVCTARELATIVOS:=ctrx_quarter/mcuentas_saldo]
+  dataset[, MOVCAJARELATIVOS:=ctrx_quarter/mcaja_ahorro]
+  dataset[, MSALDORELTRANS:=mcuentas_saldo/ctrx_quarter]
+  
+  ## deudas
+  dataset[ , MPRESTAMOSTOTAL := rowSums( cbind( cprestamos_personales, cprestamos_prendarios, cprestamos_hipotecarios), na.rm=TRUE ) ]
+  
+  # ## engagement
+  dataset[ , CDEBITOSTOTAL := rowSums( cbind( ccuenta_debitos_automaticos, ctarjeta_visa_debitos_automaticos, ctarjeta_master_debitos_automaticos,cpagodeservicios), na.rm=TRUE ) ]
+  dataset[ , EDADANT := rowSums( cbind( cliente_edad,cliente_antiguedad/12), na.rm=TRUE ) ]
+  
+  
+  
+  
   #valvula de seguridad para evitar valores infinitos
   #paso los infinitos a NULOS
   infinitos      <- lapply(names(dataset),function(.name) dataset[ , sum(is.infinite(get(.name)))])
