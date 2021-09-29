@@ -236,7 +236,16 @@ dataset[ , CPRESTAMOSTOTAL := rowSums( cbind( cprestamos_personales, cprestamos_
 # ## engagement
 dataset[ , CDEBITOSTOTAL := rowSums( cbind( ccuenta_debitos_automaticos, ctarjeta_visa_debitos_automaticos, ctarjeta_master_debitos_automaticos,cpagodeservicios), na.rm=TRUE ) ]
 dataset[ , EDADANT := rowSums( cbind( cliente_edad,cliente_antiguedad/12), na.rm=TRUE ) ]
-dataset[ ,MCAJAAHDEFL:=mcaja_ahorro/infl ]
+
+##correcciones por inflacion
+dataset[ ,MCAJAAHDEFL:=mcaja_ahorro*infl ]
+dataset[ ,MPAYROLLDEFL:=mpayroll*infl ]
+dataset[ ,MPAYROLLDEFL:=mpayroll*infl ]
+dataset[ ,MCTASSALDODEFL:=mcuentas_saldo*infl ]
+
+##correccion por estacionalidad
+##cpayroll_trx tiene picos en junio y dic por aguinaldos calculo
+dataset[ ,PAYROLLREL:=mpayroll/cpayroll_trx ]
 
 #valvula de seguridad para evitar valores infinitos
 #paso los infinitos a NULOS
