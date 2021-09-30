@@ -63,9 +63,25 @@ hs <- makeParamSet(
          makeNumericParam("prob_corte",       lower=    0.040, upper=    0.055)
         )
 
-campos_malos  <- c("mpasivos_margen")   #aqui se deben cargar todos los campos culpables del Data Drifting
+campos_malos  <- c("mpasivos_margen",
+                   "mactivos_margen",
+                   "mrentabilidad_annual",
+                   "mcomisiones",
+                   "mactivos_margen",
+                   "mpasivos_margen",
+                   "mcuenta_corriente",
+                   "tpaquete1",
+                   "tpaquete2",
+                   "tpaquete3",
+                   "tpaquete4",
+                   
+                   "cpagodeservicios",
+                   "mpagodeservicios",
+                   "ccheques_depositados_rechazados",
+                   "mcheques_depositados_rechazados"
+                   )   #aqui se deben cargar todos los campos culpables del Data Drifting
 
-ksemilla_azar  <- 102191  #Aqui poner la propia semilla
+ksemilla_azar  <- 101117  #Aqui poner la propia semilla
 #------------------------------------------------------------------------------
 #Funcion que lleva el registro de los experimentos
 
