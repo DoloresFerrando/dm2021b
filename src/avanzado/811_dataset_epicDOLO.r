@@ -339,6 +339,10 @@ AgregarVariables  <- function( dataset )
   dataset[ ,mv_mconsumospesosDEFL:=mv_mconsumospesos*infl ]
   dataset[ ,mv_mlimitecompraDEFL:=mv_mlimitecompra*infl ]
   dataset[ ,mdescubierto_preacordadoDEFL:=mdescubierto_preacordado*infl ]
+  dataset[ ,mcuenta_corrienteDEFL:= mcuenta_corriente*infl ]
+  dataset[ ,mtarjeta_visa_consumoDEFL:= mtarjeta_visa_consumo*infl ]
+  
+ 
 
 
   ##correccion por estacionalidad
