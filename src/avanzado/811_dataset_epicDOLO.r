@@ -338,6 +338,8 @@ AgregarVariables  <- function( dataset )
   dataset[ ,mv_msaldopesosDEFL:=mv_msaldopesos*infl ]
   dataset[ ,mv_mconsumospesosDEFL:=mv_mconsumospesos*infl ]
   dataset[ ,mv_mlimitecompraDEFL:=mv_mlimitecompra*infl ]
+  dataset[ ,mdescubierto_preacordadoDEFL:=mdescubierto_preacordado*infl ]
+
 
   ##correccion por estacionalidad
   ##cpayroll_trx tiene picos en junio y dic por aguinaldos calculo
